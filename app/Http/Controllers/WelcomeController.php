@@ -9,6 +9,7 @@ class WelcomeController extends Controller
     }
 
     public function thongtin(){
-        return view('thongtin');
+        //return view('thongtin');
+        return redirect()->route('hcm');
     }
 }

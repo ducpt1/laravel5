@@ -1,0 +1,1 @@
+Viewwwwww <?php echo $name1;?><?php echo $name2;?><?php echo $name3;?>

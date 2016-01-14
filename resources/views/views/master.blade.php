@@ -2,36 +2,17 @@
 <html>
 <head>
     <title>@yield('title')</title>
-    <style type="text/css">
-        #wrapper{
-            width: 980px;
-            height: auto;
-            margin:0px auto;
-        }
-        #header{
-            width: auto;
-            height: 200px;
-            background: red;
-        }
-        #content{
-            width: auto;
-            height: 500px;
-            background: blue;
-        }
-        #footer{
-            width: auto;
-            height: 100px;
-            background: green;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/template/css/mystyle.css')}}">
 </head>
 <body>
 <div id="wrapper">
+    @include('views.marquee',['mar_content' => 'Welcome to Laravel 5.x'])
+    {{--
     <div id="header">
         @section('slidebar')
             Menu
         @show
-    </div>
+    </div> --}}
     <div id="content">
         @yield('noidung')
     </div>

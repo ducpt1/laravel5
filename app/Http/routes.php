@@ -84,5 +84,54 @@ Route::get('check-view',function(){
     }
 });
 Route::get('goi-master',function(){
-    return view('views.sub');
+    return view('views.layout');
+});
+Route::get('url/full',function(){
+    return URL::full();
+});
+Route::get('url/asset',function(){
+    //return URL::asset('css/mystyle.css');
+    return asset('css/mystyle.css');
+});
+Route::get('url/to',function(){
+    return URL::to('lap-trinh',['123']);
+});
+Route::get('url/secure',function(){
+    return secure_url('thong-tin',['DucPT2','123456789'],true);
+});
+#### SCHEMA ####
+#Tao bang
+Route::get('schema/create',function(){
+    #https://laravel.com/docs/5.2/migrations
+    Schema::create('khoapham',function($table){
+        $table->increments('id');
+        $table->string('name',100);
+        $table->integer('gia');
+        $table->text('ghi_chu')->nullable();
+        $table->timestamps();
+    });
+});
+#Doi ten bang
+Route::get('schema/rename',function(){
+    #https://laravel.com/docs/5.2/migrations
+    Schema::rename('khoapham','ducpt');
+});
+#Xoa bang
+Route::get('schema/drop',function(){
+    Schema::dropIfExists('khoapham');
+});
+#Thay doi thuoc tinh cot
+Route::get('schema/change-col-attr',function(){
+    Schema::table('ducpt',function($table){
+        $table->string('name',50)->change();
+    });
+});
+#Xoa cot
+Route::get('schema/drop-col',function(){
+    Schema::table('ducpt',function($table){
+        #Xoa 1
+        #$table->dropColumn('ghi_chu');
+        #Xoa nhieu
+        $table->dropColumn(['name','gia']);
+    });
 });
